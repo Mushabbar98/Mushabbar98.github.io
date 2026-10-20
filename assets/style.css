@@ -91,7 +91,7 @@ ul{ margin:0; padding:0; list-style:none; }
 
 /* ---------- hero ---------- */
 .hero{ padding-block:80px 0; }
-.hero-grid{ display:grid; grid-template-columns:1.15fr 1fr; gap:64px; align-items:end; padding-bottom:64px; }
+.hero-grid{ display:grid; grid-template-columns:1.15fr 1fr; gap:64px; align-items:center; padding-bottom:64px; }
 @media (max-width:900px){ .hero-grid{ grid-template-columns:1fr; gap:40px; } }
 .hero h1{ font-size:clamp(2.6rem,5.6vw,5.2rem); line-height:.98; letter-spacing:-.035em; max-width:13ch; }
 .hero .lede{ font-size:1.12rem; line-height:1.65; max-width:52ch; color:var(--ink-muted); }
@@ -348,3 +348,37 @@ form.inquiry input:focus, form.inquiry select:focus, form.inquiry textarea:focus
 .g-lb__nav{ position:absolute; top:50%; transform:translateY(-50%); padding:10px 14px !important; }
 .g-lb__nav--prev{ left:16px; } .g-lb__nav--next{ right:16px; }
 @media (max-width:640px){ .g-lb__stage{ padding:16px; } .g-lb__nav{ top:auto; bottom:16px; transform:none; } }
+
+/* ---------- live flow field (home hero) ---------- */
+.flowviz{ position:relative; margin:0; display:flex; flex-direction:column; border:1px solid var(--line-100); background:var(--bg-000); }
+.flowviz__bar{ display:flex; justify-content:space-between; gap:12px; padding:12px 16px; border-bottom:1px solid var(--line-100); font-family:var(--font-mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-faint); }
+.flowviz__key{ display:inline-flex; align-items:center; gap:8px; }
+.flowviz__key i{ display:inline-block; width:64px; height:4px; background:linear-gradient(90deg, var(--data-cool), #3d4a55 35%, var(--accent) 70%, var(--data-hot)); }
+.flowviz__bar > span:first-child{ display:inline-flex; align-items:center; gap:8px; color:var(--ink-muted); }
+.flowviz__live{ width:6px; height:6px; border-radius:50%; background:var(--accent); animation:g-pulse 1.6s ease-in-out infinite; }
+.flowviz canvas{ display:block; width:100%; aspect-ratio:5/4; cursor:crosshair; touch-action:pan-y; }
+.flowviz__probe{ position:absolute; right:14px; top:54px; font-family:var(--font-mono); font-size:11px; letter-spacing:.04em; color:var(--ink-muted); background:rgba(7,9,11,.78); border:1px solid var(--line-100); padding:5px 9px; pointer-events:none; }
+.flowviz__ctrl{ display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:16px; padding:14px 16px; border-top:1px solid var(--line-100); font-family:var(--font-mono); font-size:12px; color:var(--ink-faint); letter-spacing:.04em; }
+.flowviz__ctrl label{ white-space:nowrap; }
+.flowviz__ctrl b{ color:var(--ink); font-weight:500; font-variant-numeric:tabular-nums; display:inline-block; min-width:5ch; }
+.flowviz__cl b{ color:var(--accent-text); min-width:4ch; }
+.flowviz input[type="range"]{ -webkit-appearance:none; appearance:none; width:100%; height:24px; background:transparent; cursor:pointer; }
+.flowviz input[type="range"]::-webkit-slider-runnable-track{ height:2px; background:var(--line-200); }
+.flowviz input[type="range"]::-moz-range-track{ height:2px; background:var(--line-200); }
+.flowviz input[type="range"]::-webkit-slider-thumb{ -webkit-appearance:none; width:16px; height:16px; margin-top:-7px; border-radius:50%; background:var(--accent); border:2px solid var(--bg-000); }
+.flowviz input[type="range"]::-moz-range-thumb{ width:14px; height:14px; border-radius:50%; background:var(--accent); border:2px solid var(--bg-000); }
+@media (max-width:480px){ .flowviz__ctrl{ grid-template-columns:1fr auto; } .flowviz__ctrl input{ grid-column:1 / -1; grid-row:2; } .flowviz__bar > span:last-child{ display:none; } }
+
+.flowviz__note{ position:absolute; left:14px; bottom:62px; font-family:var(--font-mono); font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-faint); pointer-events:none; }
+@media (max-width:480px){ .flowviz__note{ display:none; } }
+.flow-section{ display:grid; grid-template-columns:minmax(0,5fr) minmax(0,7fr); gap:64px; align-items:center; }
+.flow-section h2{ font-size:clamp(1.9rem,3.2vw,2.8rem); max-width:16ch; }
+.flow-section p{ max-width:48ch; }
+@media (max-width:900px){ .flow-section{ grid-template-columns:1fr; gap:32px; } }
+
+/* ---------- hero background: molecular motion ---------- */
+.hero-sheet{ position:relative; overflow:hidden; }
+.hero-molecules{ position:absolute; inset:0; z-index:0; pointer-events:none; display:block;
+  -webkit-mask-image:radial-gradient(ellipse 100% 95% at 50% 45%, #000 70%, transparent 100%);
+          mask-image:radial-gradient(ellipse 100% 95% at 50% 45%, #000 70%, transparent 100%); }
+.hero-sheet > .wrap{ position:relative; z-index:1; }
